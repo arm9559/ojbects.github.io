@@ -1,153 +1,161 @@
-let modalcontainer = document.querySelector(".aside-first")
-let usercontainer = document.querySelector('.user-container')
-
-let getaddbutton = document.querySelector("#adduser").addEventListener("click",() =>{
-    modalcontainer.style.display = "block"
-})
-
-let iconremove = document.querySelector('.icon').addEventListener('click',()=>{
-    modalcontainer.style.display = "none"
-})
-
-let addbutton = document.querySelector('.addbutton').addEventListener('click',() =>{
-let getmtct = document.querySelector('main');
-    let createDiv = document.createElement('div');
-        createDiv.setAttribute('class','user-container container col-sm-12 col-md-12 col-xs-12 col-lg-12')
-            let createspanone = document.createElement('span')
-                createspanone.setAttribute('class','user-information span-one')
-                    let createspantwo = document.createElement('span')
-                        createspantwo.setAttribute('class','user-information span-two')
-                            let createspantree = document.createElement('span')
-                                createspantree.setAttribute('class','user-information span-tree date')
-                                    let createspanfour = document.createElement('span')
-                                    createspanfour.setAttribute('class','user-information span-four licences')
-                                        let createbuttonsspan = document.createElement('span');
-                                        createbuttonsspan.setAttribute('class','buttons-span');
-                                            let createElementButtonOne = document.createElement('button')
-                                            createElementButtonOne.setAttribute('class','btn btn-success addlicense')
-                                                createElementButtonOne.setAttribute('id','cl')    
-                                            let createElementButtonTwo = document.createElement('button')
-                                                createElementButtonTwo.setAttribute('class','btn btn-danger remove')
-
-                                                modalcontainer.style.display = "none"
-                                                
-                                        getmtct.append(createDiv)
-                                        createDiv.appendChild(createspanone)
-                                        createDiv.appendChild(createspantwo)
-                                        createDiv.appendChild(createspantree)
-                                        createDiv.appendChild(createspanfour)
-                                        createElementButtonOne.innerHTML = 'Add Licence'
-                                        createElementButtonTwo.innerHTML = 'Remove'
-                                        createDiv.appendChild(createElementButtonOne)
-                                        createDiv.appendChild(createElementButtonTwo)
-                                        createDiv.appendChild(createbuttonsspan);
-                                        
-                                        createbuttonsspan.appendChild(createElementButtonOne)
-                                        createbuttonsspan.appendChild(createElementButtonTwo)
-
+const modalbutton = document.querySelector("#adduser").addEventListener('click',()=>{
+    let modalfirst = document.querySelector("#asidefirst")
+    modalfirst.style.display = "block"
     
-    let date = new Date()
-    let setdate = document.querySelector('.date').innerHTML = "0" + date.getDay() + " " + ". " + date.getMonth() + ". " + date.getFullYear()
-
-    let getlicense = document.querySelector(".licences")
-    getlicense.innerHTML = 0;
-    
-    let namefirst = document.querySelector('#namefirst').value
-    let idfirst = document.querySelector('#idfirst').value
-
-    let usersobj = {
-        firstname:namefirst,
-        firstid:idfirst
+    function icons(){
+        const firsticon = document.querySelector('.iconfirst').addEventListener('click',()=>{
+            modalfirst.style.display = "none"
+        })
+        const secondicon = document.querySelector('.iconsecond').addEventListener('click',()=>{
+            let modalsecond = document.querySelector('#asidesecond')
+            modalsecond.style.display = "none"
+        })
     }
-
-    createspanone.innerHTML = usersobj.firstname
-    createspantwo.innerHTML = usersobj.firstid
- 
-    let licenses = document.querySelector('#cl').addEventListener('click',()=>{
-        let createlicensecontainerone = document.createElement('div')
-        createlicensecontainerone.setAttribute('class','user-child-container-one container col-sm-10')
-            let createlicensespanone = document.createElement('span')
-                createlicensespanone.setAttribute('class','license-span-one-one col-sm-2 opacity')
-                createlicensespanone.innerHTML = "Licenses"
-                    let createlicensespantwo = document.createElement('span')
-                        createlicensespantwo.setAttribute('class','license-span-two-two col-sm-8 opacity')
-                        createlicensespantwo.innerHTML = "Expires"
-
-                        createlicensecontainerone.appendChild(createlicensespanone)
-                        createlicensecontainerone.appendChild(createlicensespantwo)
+    icons()
+})
 
 
+          const adduser = document.getElementById("adduserbutton").addEventListener('click',() =>{
+            let getname = document.querySelector('#namefirst').value
+            let getid = document.querySelector('#idfirst').value
+            let modalfirst = document.querySelector("#asidefirst")
+            modalfirst.style.display = "none"
+            if(getname == "" && getid == "" || getname == "" || getid == ""){
+                alert("Please write")
+            }
+            else{
+                const main = document.querySelector('main')
+                const createuserscontainer = document.createElement('div')
+                  createuserscontainer.setAttribute('class','user-container container col-sm-12 col-md-12 col-xs-12 col-lg-12')
+                  main.appendChild(createuserscontainer)
 
-        let createlicensecontainertwo = document.createElement('div')
-            createlicensecontainertwo.setAttribute('class','user-child-container-two container col-sm-10')
-                let createlicensespantree = document.createElement('span')
-                    createlicensespantree.setAttribute('class','license-span-tree-tree col-sm-2 addspan')
-                        let createlicensespanfour = document.createElement('span')
-                            createlicensespanfour.setAttribute('class','license-span-four-four col-sm-8')
+                      let createspanone = document.createElement('span')
+                            createspanone.setAttribute('class','span-one user-information')
+                            createspanone.innerHTML = getname
+                            createuserscontainer.append(createspanone)
+                      let createspantwo = document.createElement('span')
+                            createspantwo.setAttribute('class','span-two user-information')
+                            createspantwo.innerHTML = getid
+                            createuserscontainer.append(createspantwo)
+                     let createspantree = document.createElement('span')
+                            createspantree.setAttribute('class','span-tree user-information')
+                            const date = new Date()
+                            createspantree.innerHTML = "0" + date.getDate() + " " + date.getMonth() + " " + date.getFullYear()
+                            createuserscontainer.append(createspantree)
+                     let createspanfour = document.createElement('span')
+                            createspanfour.setAttribute('class','span-four user-information')
+                            let plus = 0
+                            createspanfour.innerHTML = plus
+                            createuserscontainer.append(createspanfour)
 
-                            createlicensecontainertwo.appendChild(createlicensespantree)
-                            createlicensecontainertwo.appendChild(createlicensespanfour)
-                               
-                                        let parent = document.createElement("div");
-                                        parent.setAttribute('class','childs-container-parent container')
+                            
 
-                                        parent.appendChild(createlicensecontainerone)
-                                        parent.appendChild(createlicensecontainertwo)
-
-                                        let section = document.querySelector('section')
-                                        section.appendChild(parent)
+                                let createbuttonsspan = document.createElement('span')
+                                    createbuttonsspan.setAttribute('class','buttons-span')
+                                    createuserscontainer.append(createbuttonsspan)
+                                    let createElementButtonOne = document.createElement('button')
+                                    createElementButtonOne.setAttribute('class','btn btn-success addlicense')
+                                    let createElementButtonTwo = document.createElement('button')
+                                    createElementButtonTwo.setAttribute('class','btn btn-danger remove')
                                     
-                                        
-    })
-                                         let addlicensebutton = document.querySelector('.addlicense').addEventListener('click',() =>{
-                                            let asidesecond = document.querySelector('.aside-second')
-                                            asidesecond.style.display = 'block'
-                                            
-                                            let addlicensetwo = document.querySelector('.addlicensetwo').addEventListener('click',() => {
-                                                let getlicensename = document.querySelector('#licensename').value
-                                                let getlicensedate = document.querySelector('#licensedate').value
+                                    createElementButtonOne.innerHTML = "Add License"
+                                    createElementButtonTwo.innerHTML = "Remove"
+                                    createbuttonsspan.append(createElementButtonOne)
+                                    createbuttonsspan.append(createElementButtonTwo)
 
-                                                let getone = document.querySelector('.license-span-tree-tree').innerHTML = getlicensename
-                                                let gettwo = document.querySelector('.license-span-four-four').innerHTML = getlicensedate
+                    let titles = document.createElement('div');
+                    titles.setAttribute('class','user-child-container-one container col-sm-6')
+                    main.append(titles)
 
-                                                let namefirstt = document.getElementById('namefirst').value
-                                                let idfirstt = document.getElementById('idfirst').value
-                                                
-                                                let spanname = document.querySelector('.aa');
-                                                spanname.innerHTML = namefirstt
-                                                console.log(namefirstt.value)
-                                            })
-                                        })
-})
-let get = document.querySelector('.remove-aside-second').addEventListener('click',() =>{
-    let asidesecond = document.querySelector('.aside-second')
-    asidesecond.style.display = 'none'
-})
+                
+                    let titlesfirstspan = document.createElement('span')
+                    titlesfirstspan.setAttribute('class','license-title-one col-sm-2 opacity')
+                    titlesfirstspan.innerHTML = "Licences"
+                    titles.append(titlesfirstspan)
 
-    let replaceone = document.querySelector('.subscription').addEventListener('click',()=>{
+                    let titlessecondspan = document.createElement('span')
+                    titlessecondspan.setAttribute('class','license-title-two col-sm-6 opacity')
+                    titlessecondspan.innerHTML = "Expires"
+                    titles.append(titlessecondspan)
+                    let removeuserscontainer = document.querySelector('.remove').addEventListener('click',()=>{
+                        let users = document.querySelector(".user-container")
+                        let licences = document.querySelector('.user-child-container-one')
+                        users.remove()
+                        licences.remove()
+                    })
+            }
+            let modalsecond = document.querySelector('.addlicense').addEventListener('click',() =>{
+                let main = document.querySelector('main')
 
 
-        let subscription = document.querySelector('.subscription')
-        let offline = document.querySelector('.offline-activation')
-        offline.style.display = "none";
+                let licencesname = document.getElementById("licencesname")
+                let licencesdate = document.getElementById("licencesdate")
 
-        let spanss = document.querySelectorAll('.addspan')
-        let x = document.createElement('div');
-            x.setAttribute('class','x')
+                let getsecondmodal = document.querySelector('.aside-second')
+                getsecondmodal.style.display = "block"
+                let getaddlicencesbutton = document.querySelector('.addlicensetwo').addEventListener('click',()=>{
+                    let modalsecond = document.querySelector('#asidesecond')
+                    modalsecond.style.display = "none"
+                        let createchildusercontainer = document.createElement('div');
+                        createchildusercontainer.setAttribute('class','user-container-two container col-sm-7')
 
-            // let spanname = document.createElement('span');
-            // spanname.setAttribute('class','othersppanone')
-            // spanname.innerHTML = "asdjhj"
+                        let childsspanone = document.createElement('span')
+                        childsspanone.setAttribute('class','user-first-span col-sm-3')
+                        childsspanone.innerHTML = licencesname.value
 
-            // x.appendChild(spanname)
-            subscription.appendChild(x)
+                        let childsspantwo = document.createElement('span')
+                        childsspantwo.setAttribute('class','user-second-span col-sm-5')
+                        childsspantwo.innerHTML = licencesdate.value
+                        
 
+                        createchildusercontainer.append(childsspanone)
+                        createchildusercontainer.append(childsspantwo)
+                        main.appendChild(createchildusercontainer)
+
+                      
+                })
+            })
+        })
+
+       
+
+        function sclick(){
+            let getbody = document.querySelector("#body");
+            let title = document.querySelector('.subscription')
+            title.style.borderBottom = "2px solid #18A7FF"
+            title.style.opacity = "1"
+
+            let getoffline = document.querySelector('.offline')
+                getoffline.style.borderBottom = "none"
             
-        // for(let i = 0; i < spanss.length; i++){
-            
-        //     x.innerHTML = spanss[i]
-        // }
+            getbody.style.display = "none"
+            let getspans = document.querySelectorAll('.sp')
 
+             let getname = document.querySelector('#namefirst').value
+             let getid = document.querySelector('#idfirst').value
 
-    })
+             let getsubs = document.getElementById("subscription")
+             getsubs.style.display = "block"
+             const date = new Date()
+            for(let i = 0; i < getspans.length;i++){
+                getspans[0].innerHTML = getname
+                getspans[1].innerHTML = getid
+                getspans[2].innerHTML = "0" + date.getDate() + " " + date.getMonth() + " " + date.getFullYear()
+                getspans[3].innerHTML = 0
+            }
+        }
 
+        function of(){
+            let get = document.querySelector('#body')
+            get.style.display = "block"
+
+            let getsubs = document.getElementById("subscription")
+             getsubs.style.display = "none"
+
+             let offline = document.querySelector('.offline')
+                offline.style.borderBottom = "2px solid #18A7FF"
+
+                let subs = document.querySelector('.subscription')
+                    subs.style.borderBottom = "none"
+
+        }

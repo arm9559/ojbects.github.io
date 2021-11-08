@@ -9,6 +9,9 @@
     height: 2px;
 }
 //
+#subscription{
+    display:none;
+}
 body{
     background:#1F2224;
 }
@@ -52,7 +55,7 @@ nav{
     }
 }
 //Modal Container
-    .aside-first{
+    .aside-first {
         position:relative;
         display: none;
         .modal-container{
@@ -90,47 +93,35 @@ main{
     top: 147px;
     color:#D6DDDE;
     font-family: Roboto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     .main-text-container-two{
         display: flex;
         justify-content: space-between;
     }
-    .user-container{
+    .user-container , .user-container-two{
         display: flex;
-        // display: none;
         justify-content: space-between;
         height: 44px;
         background: #1A1C1E;
         border-radius: 4px;
     }
-}
-.childs-container-parent{
-    position: relative;
-    top:181px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    grid-gap: 15px;
-    color:#D6DDDE;
-    font-family: Roboto;
-}
-.user-child-container-one{
-    position: relative;
-    display: flex;
-    justify-content: space-between;
-}
-.user-child-container-two{
-    display: flex;
-    // display: none;
-    justify-content: space-between;
-    height: 44px;
-    background: #1A1C1E;
-    border-radius: 4px;
+    .user-container-two{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+    .user-child-container-one {
+        display: flex;
+        justify-content: space-between;
+    }
 }
 //Modal Container
 .aside-second{
-    position:relative;
+    position:absolute;
     display: none;
+    top:-150px;
     .modal-container{
         display: flex;
         justify-content: center;
@@ -159,8 +150,19 @@ main{
         }
     }
 }
-.subscription {
-    h1{
+#subscription{
+    position: relative;
+    top:150px;
+    .systems{
         color:white;
+        display: flex;
+        justify-content: space-between;
+    }
+    .systems-child{
+        position: relative;
+        top: 55px;
+        color:white;
+        display: flex;
+        justify-content: space-between;
     }
 }
